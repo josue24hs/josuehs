@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <h3>Lista de Pacientes</h3>
+        <form class="d-flex" role="search" method="get" action="{% url 'buscar' %}">
+            <h4>Buscar por: </h4>
+            <label for="opciones"></label>
+            <select name="opciones" id="opciones">
+                <option value="nombre">Nombre</option>
+                <option value="edad">Edad</option>
+                <option value="diagnostico">Diagnostico</option>
+                <option value="updrs">UPDRS</option>
+            </select>
+            <input  placeholder="Buscar..." type="search" name="valor" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+            <button class="btn btn-outline-success" type="submit">Mostrar todos</button>
+        </form>                              
+        </div>
+      </nav>
+    <table border="1" class="table table-bordered border-primary">
+        <tr>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>Diagnostico</th>
+            <th>UPDRS</th>
+        </tr>
+        {% for persona in personas %}
+        <tr>
+            <td>{{ persona.nombre }}</td>
+            <td>{{ persona.edad }}</td>
+            <td>{{ persona.diagnostico }}</td>
+            <td>{{ persona.updrs  }}</td>
+            <td>
+              <form action="{% url 'eliminar' persona.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button class="btn btn-outline-danger" type="submit">Eliminar</button>
+
+            </form>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <a href="{% url 'editar' persona.id %}" class="btn btn-outline-primary">Editar</a>
+            </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="{% url 'exportar' %}"><button class="btn btn-success" type="submit">Descargar exel</button></form>
+    <form action="{% url 'agregar' %}"><button class="btn btn-primary" type="submit">Inicio</button></form>
+</body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</html>
