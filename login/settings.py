@@ -77,7 +77,9 @@ WSGI_APPLICATION = 'login.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-'default': dj_database_url.config(default='mysql://root:cochu@localhost:3307/pacientes')
+DATABASES = {
+    'default': dj_database_url.config(default='mysql://root:cochu@localhost:3307/pacientes')
+}
 
 
 # Password validation
