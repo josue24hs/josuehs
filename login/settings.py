@@ -9,8 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-import os
-import dj_database_url
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,14 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-fvta=0b4g^^)@+p3=6=g0sov1v1o9upu*y(ua^v3h3309uc4xm')
-# SECRET_KEY = 'django-insecure-fvta=0b4g^^)@+p3=6=g0sov1v1o9upu*y(ua^v3h3309uc4xm'
+SECRET_KEY = 'django-insecure-fvta=0b4g^^)@+p3=6=g0sov1v1o9upu*y(ua^v3h3309uc4xm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', '') != 'False'
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -77,12 +74,16 @@ WSGI_APPLICATION = 'login.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pacientes',
+        'USER':'root',
+        'PASSWORD':'cochu',
+        'HOST':'localhost',
+        'PORT':'3307',
+    }
 }
-
 
 
 # Password validation
