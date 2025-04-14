@@ -27,5 +27,4 @@ urlpatterns = [
     path('buscar/', views.buscar, name='buscar'),
     path('eliminar/<int:id>/', views.eliminar, name='eliminar'),
     path('editar/<int:id>/', views.editar, name='editar'),
-
 ]
