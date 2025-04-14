@@ -88,7 +88,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME', 'pacientes'),
         'USER': os.getenv('DB_USER', 'root'),
         'PASSWORD': os.getenv('DB_PASSWORD', 'cochu'),
-        'HOST': os.getenv('DB_HOST', 'pacienteshost.railway.app'),
+        'HOST': os.getenv('DB_HOST', 'mysql.railway.internal'),
         'PORT': os.getenv('DB_PORT', '3307'),
     }
 }
