@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-fvta=0b4g^^)@+p3=6=g0sov1v1o9upu*y(ua^v3h3309uc4xm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'josuehs-production.up.railway.app']
+
 
 
 # Application definition
@@ -84,9 +85,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('DB_NAME', 'pacientes'),
         'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'tu_contraseña'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'cochu'),
         'HOST': os.getenv('DB_HOST', 'pacienteshost.railway.app'),
-        'PORT': os.getenv('DB_PORT', '3306'),
+        'PORT': os.getenv('DB_PORT', '3307'),
     }
 }
 
