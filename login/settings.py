@@ -79,13 +79,14 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pacientes',
-        'USER':'root',
-        'PASSWORD':'cochu',
-        'HOST':'localhost',
-        'PORT':'3307',
+        'NAME': os.getenv('DB_NAME', 'pacientes'),  # Nombre de la base de datos
+        'USER': os.getenv('DB_USER', 'root'),  # Usuario
+        'PASSWORD': os.getenv('DB_PASSWORD', 'cochu'),  # Contraseña
+        'HOST': os.getenv('DB_HOST', 'localhost'),  # El host proporcionado por Railway
+        'PORT': os.getenv('DB_PORT', '3306'),  # El puerto también proporcionado por Railway
     }
 }
+import os
 
 
 # Password validation
