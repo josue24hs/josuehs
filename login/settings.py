@@ -73,20 +73,23 @@ WSGI_APPLICATION = 'login.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+import os
 import pymysql
 pymysql.install_as_MySQLdb()
+
+
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'pacientes'),  # Nombre de la base de datos
-        'USER': os.getenv('DB_USER', 'root'),  # Usuario
-        'PASSWORD': os.getenv('DB_PASSWORD', 'cochu'),  # Contraseña
-        'HOST': os.getenv('DB_HOST', 'localhost'),  # El host proporcionado por Railway
-        'PORT': os.getenv('DB_PORT', '3306'),  # El puerto también proporcionado por Railway
+        'NAME': os.getenv('DB_NAME', 'pacientes'),
+        'USER': os.getenv('DB_USER', 'root'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'tu_contraseña'),
+        'HOST': os.getenv('DB_HOST', 'pacienteshost.railway.app'),
+        'PORT': os.getenv('DB_PORT', '3306'),
     }
 }
-import os
+
 
 
 # Password validation
