@@ -80,16 +80,19 @@ import os
 import pymysql
 pymysql.install_as_MySQLdb()
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'NAME': os.getenv('DB_NAME', 'railway'),  # nombre de tu DB
+        'USER': os.getenv('DB_USER', 'root'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'FWRgPXeWywQKhqZscCVCHSVRdsocgBWT'),
+        'HOST': os.getenv('DB_HOST', 'shinkansen.proxy.rlwy.net'),
+        'PORT': os.getenv('DB_PORT', '29283'),
     }
 }
+
 
 
 
